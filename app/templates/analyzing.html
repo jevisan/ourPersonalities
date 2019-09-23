@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block pagestyles %}
+{% endblock %}
+
+{% block app_content %}
+<div class="row">
+    <div id="content" class="container">
+        <h3>{{ title }}</h3>
+        <div id="notifications"></div>
+
+        <div id="progress" class="panel panel-default">
+            <div class="panel-body">
+                <p class="progress-description">
+                    El analisis de su personalidad está en proceso. Este puede llevar algún tiempo.
+                </p>
+                <p>
+                    Se le enviará un mensaje a su correo cuando el proceso termine.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

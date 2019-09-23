@@ -1,0 +1,117 @@
+2019-09-21 18:26:13,814 : ERROR : Exception on /analyze_user/jevisan85 [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/redis/connection.py", line 538, in connect
+    sock = self._connect()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/redis/connection.py", line 595, in _connect
+    raise err
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/redis/connection.py", line 583, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 106, in analyze_user
+    current_user.launch_task('analyze_user', 'Analizando usuario', user_tag=usertag, timeout='60m')
+  File "/home/jevisan/ourPersonalities/app/models.py", line 34, in launch_task
+    rq_job = current_app.task_queue.enqueue('app.tasks.' + name, self.id, *args, **kwargs)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/rq/queue.py", line 336, in enqueue
+    at_front=at_front, meta=meta
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/rq/queue.py", line 286, in enqueue_call
+    job = self.enqueue_job(job, at_front=at_front)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/rq/queue.py", line 362, in enqueue_job
+    pipe.execute()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/redis/client.py", line 3685, in execute
+    self.shard_hint)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/redis/connection.py", line 1071, in get_connection
+    connection.connect()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/redis/connection.py", line 543, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to None:6379. Connection refused.
+2019-09-21 18:28:47,855 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-21 18:29:19,722 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-21 18:35:01,897 : ERROR : Exception on /analyze_user/jevisan85 [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-09-21 18:36:18,623 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-21 18:36:35,395 : INFO : ourPersonalities startup [in ./app/__init__.py:74]
+2019-09-21 18:40:14,947 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-21 18:40:26,117 : INFO : ourPersonalities startup [in ./app/__init__.py:74]
+2019-09-21 18:44:38,021 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-21 18:44:57,216 : INFO : ourPersonalities startup [in ./app/__init__.py:74]
+2019-09-21 18:44:57,352 : INFO : Solicitando analisis de jevisan85 [in ./app/tasks.py:192]
+2019-09-21 18:44:58,278 : ERROR : Unhandled exception [in ./app/tasks.py:270]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 214, in analyze_user
+    user_personality = get_user_personality(user_tweets)
+  File "./app/tasks.py", line 147, in get_user_personality
+    corpus = nltk.word_tokenize(corpus)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/nltk/tokenize/__init__.py", line 144, in word_tokenize
+    sentences = [text] if preserve_line else sent_tokenize(text, language)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/nltk/tokenize/__init__.py", line 105, in sent_tokenize
+    tokenizer = load('tokenizers/punkt/{0}.pickle'.format(language))
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/nltk/data.py", line 868, in load
+    opened_resource = _open(resource_url)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/nltk/data.py", line 993, in _open
+    return find(path_, path + ['']).open()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/nltk/data.py", line 701, in find
+    raise LookupError(resource_not_found)
+LookupError: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/PY3/english.pickle[0m
+
+  Searched in:
+    - '/home/jevisan/nltk_data'
+    - '/home/jevisan/ourPersonalities/venv/nltk_data'
+    - '/home/jevisan/ourPersonalities/venv/share/nltk_data'
+    - '/home/jevisan/ourPersonalities/venv/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - ''
+**********************************************************************
+
+2019-09-21 18:46:11,465 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-21 18:46:27,089 : INFO : ourPersonalities startup [in ./app/__init__.py:74]
+2019-09-21 18:46:27,233 : INFO : Solicitando analisis de jevisan85 [in ./app/tasks.py:192]
+2019-09-21 19:37:52,254 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-21 19:38:32,546 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-09-21 19:38:32,669 : INFO : Solicitando analisis de uamcuajimalpa [in ./app/tasks.py:192]
+2019-09-23 12:41:19,068 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 12:41:36,258 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 12:42:07,564 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:11:05,018 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:12:20,818 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:14:40,104 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:21:43,948 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]

@@ -1,0 +1,15 @@
+2019-09-23 13:25:27,746 : ERROR : Exception on /acerca [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-09-23 13:28:10,493 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:29:30,930 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:30:47,228 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:31:03,914 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]

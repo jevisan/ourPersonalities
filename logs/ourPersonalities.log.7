@@ -1,0 +1,106 @@
+2019-09-02 10:23:58,398 : ERROR : Exception on / [GET] [in /home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 75, in welcome
+    return render_template('welcome.html')
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jevisan/ourPersonalities/app/templates/welcome.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/home/jevisan/ourPersonalities/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/jevisan/ourPersonalities/app/templates/welcome.html", line 29, in block "content"
+    {% include 'footer.html' %}
+  File "/home/jevisan/ourPersonalities/app/templates/footer.html", line 8, in top-level template code
+    <li><a href="{{ url_for('demo') }}">Demo</a></li>
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'demo'. Did you mean 'main.demo' instead?
+2019-09-02 10:25:41,632 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-02 14:29:27,712 : INFO : ourPersonalities startup [in ./app/__init__.py:74]
+2019-09-02 14:29:27,937 : INFO : Solicitando analisis de svsnet [in ./app/tasks.py:192]
+2019-09-02 14:44:45,312 : INFO : ourPersonalities startup [in ./app/__init__.py:74]
+2019-09-02 14:44:45,450 : INFO : Solicitando analisis de OneiricVoyageur [in ./app/tasks.py:192]
+2019-09-02 14:46:05,298 : INFO : ourPersonalities startup [in ./app/__init__.py:74]
+2019-09-02 14:46:05,434 : INFO : Solicitando analisis de OneiricVoyageur [in ./app/tasks.py:192]
+2019-09-02 14:46:25,547 : ERROR : Unhandled exception [in ./app/tasks.py:270]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 197, in analyze_user
+    friends_ids = get_user_friends(user_name=user['screen_name'])
+TypeError: 'TwythonError' object is not subscriptable
+2019-09-04 21:21:39,251 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-04 21:21:54,030 : ERROR : Exception on /login [POST] [in /home/jevisan/.local/lib/python2.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/jevisan/.local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jevisan/.local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jevisan/.local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jevisan/.local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jevisan/.local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 39, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 514, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/scoping.py", line 74, in __call__
+    return self.registry()
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/util/_collections.py", line 1001, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py", line 2950, in __call__
+    return self.class_(**local_kw)
+  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 143, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 877, in engine
+    return self.get_engine()
+  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 896, in get_engine
+    return connector.get_engine()
+  File "/usr/local/lib/python2.7/dist-packages/flask_sqlalchemy/__init__.py", line 559, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/__init__.py", line 425, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/engine/strategies.py", line 81, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/usr/local/lib/python2.7/dist-packages/sqlalchemy/dialects/mysql/pymysql.py", line 62, in dbapi
+    return __import__('pymysql')
+ImportError: No module named pymysql
+2019-09-04 21:22:54,349 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-04 21:28:52,707 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-04 21:40:47,759 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]

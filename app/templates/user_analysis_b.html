@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div class="row">
+    <div id="content" class="container">
+        <h3>Un momento, estamos recopilando información tuya y de tus amigos.</h3>
+        <div id="notifications">
+            {% if proceed_status == 2 %}
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+            {% endif %}
+            {% if proceed_status == 3 %}
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+            {% endif %}
+        </div>
+        <div id="progress" class="panel panel-default">
+            <div class="panel-body">
+                <p class="progress-description"></p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
+    <script type="text/javascript">
+    function set_task_progress(progress, status_description) {
+            // $('#analysis-progress').text(progress + '% - ' + status_description);
+            $('.progress-description').text(status_description);
+            $('.progress-bar').css('width', progress + '%').attr('aria-valuenow', progress).text(progress + '%');
+    }
+
+    var since = 0;
+    var progress = setInterval(get_progress_notifications, 1000);
+
+    function get_progress_notifications() {
+        $.ajax('{{ url_for('main.user_analysis_notifications') }}').done(
+                function(analysis_progress) {
+                    set_task_progress(analysis_progress.progress, analysis_progress.status_description);
+                    if (analysis_progress.progress == 100) {
+                        stop_progress_notifications();
+                        get_new_body();
+                    } else if (analysis_progress.progress > 100) {
+                        stop_progress_notifications();
+                        set_error_message();
+                    }
+                }
+            );
+    }
+    function stop_progress_notifications() {
+        clearInterval(progress);
+    }
+    function set_error_message() {
+        $("#progress").empty();
+        elem = '<div class="alert alert-danger"><strong>Ocurrió un error inesperado</strong><br>No pudimos completar el análisis</div>';
+        $("#notifications").append(elem);
+    }
+    function get_new_body() {
+        $.ajax('{{ url_for('main.get_new_body') }}').done(
+            function(results) {
+                elem = document.getElementById("content");
+                elem.innerHTML = results;
+                set_chart();
+            }
+        );
+    }
+    function set_chart() {
+            $.ajax('{{ url_for('main.get_analysis_results') }}').done(
+                function(results) {
+                    var ctx = document.getElementById("analyticChart").getContext("2d");
+
+                    // hay que armar un dataset (array) con objetos
+                    datasets = []
+                    // personalidad del usuario
+                    user_data = []
+                    for (i = 0; i < 5; i++) {
+                        point = {x: i, y: results['user_personality'][i]};
+                        user_data.push(point);
+                    }
+                    // objeto usuario
+                    user = {
+                        label: results['user'],
+                        borderColor: '#ff6384',
+                        backgroundColor: '#ff6384',
+                        xAxisID: 'mainXAxis',
+                        data: user_data
+                    };
+
+                    datasets.push(user);
+
+                    friends = results['friends'];
+                    used_points = [];
+                    var lim = 3;
+
+                    for (i = 0; i < friends.length; i++) {
+                        friend = results['friends'][i];
+                        friend_personality = []
+                        for (j = 0; j < friend['personality'].length; j++) {
+                            min_x = j - 0.3;
+                            max_x = j + 0.3;
+                            min_y = friend['personality'][j] - 0.3;
+                            max_y = friend['personality'][j] + 0.3;
+
+                            var new_x = (Math.random() * (max_x - min_x)) + min_x;
+                            var new_y = (Math.random() * (max_y - min_y)) + min_y;
+                            // point = {x: j, y: friend['personality'][j]};
+                            point = {x: new_x, y: new_y};
+
+                            friend_personality.push(point);
+                        }
+                        user = {
+                            label: friend['name'],
+                            data: friend_personality,
+                            backgroundColor: '#819FF7',
+                            xAxisID: 'secondaryXAxis',
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: '#FE2E2E'
+                        };
+                        datasets.push(user);
+                    }
+
+                    var analyticChart = new Chart(ctx, {
+                        type: 'scatter',
+                        data: {
+                            datasets: datasets,
+                        },
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    type: 'category',
+                                    position: 'bottom',
+                                    display: true,
+                                    labels: ['EXT', 'OPE', 'STA', 'AGR', 'CON'],
+                                    id: 'mainXAxis',
+                                    offset: true,
+                                }, {
+                                    type: 'linear',
+                                    position: 'bottom',
+                                    display: false,
+                                    id: 'secondaryXAxis',
+
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        suggestedMin: -1.5,
+                                        suggestedMax: 1.5
+                                    }
+                                }]
+                            },
+                            tooltips: {
+                                callbacks: {
+                                    label: function(tooltipItem, data) {
+                                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                                        return label;
+                                    }
+                                }
+                            },
+                            hover: {
+                                mode: 'dataset'
+                            }
+                        }
+                    });
+                }
+            );
+        }
+    </script>
+{% endblock %}

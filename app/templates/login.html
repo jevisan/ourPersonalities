@@ -1,0 +1,58 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customlogin.css') }}">
+    <style>
+        .form-signin input[id="username"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[id="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        hr {
+            border-top: 2px solid #eca334;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+
+        <form class="form-signin" action="" method="post">
+            <h1>ourPersonalities</h1>
+            <hr>
+            {{ form.hidden_tag() }}
+            <h2 class="form-signin-heading">Log in</h2>
+            <!-- USERNAME -->
+            {{ form.username.label(class='sr-only') }}
+            {{ form.username(class_='form-control', placeholder="Nombre de usuario") }}
+            <!-- PASSWORD -->
+            {{ form.password.label(class='sr-only') }}
+            {{ form.password(class_='form-control', placeholder="Password") }}
+            <div class="checkbox">
+              <label>
+                {{ form.remember_me() }} {{ form.remember_me.label }}
+              </label>
+            </div>
+
+            <div class="">
+                {% for error in form.username.errors %}
+                <p class="bg-danger">{{ error }}</p>
+                {% endfor %}
+                {% for error in form.password.errors %}
+                <p class="bg-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+            {{ form.submit(class='btn btn-lg btn-primary btn-block') }}
+            <a href="{{ url_for('main.register') }}" class="btn btn-block">¿Aún no tienes cuenta?</a>
+        </form>
+
+    </div> <!-- /container -->
+{% endblock %}

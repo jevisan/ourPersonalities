@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block pagestyles %}
+
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>ourPersonalities</h1>
+        <p>Esta herramienta muestra las similitudes entre usuarios de Twitter a partir de su personalidad</p>
+        <h3>Inicia ahora</h3>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('main.register') }}">Registrarse</a><a class="btn btn-lg" href="{{ url_for('main.login') }}">Iniciar sesión</a></p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <!-- <div class="thumbnail">
+                <img src="" alt="...">
+                <div class="caption">
+                    <h3>Label</h3>
+                    <p>Una descripción</p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+{% endblock %}

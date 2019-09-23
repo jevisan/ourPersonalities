@@ -1,0 +1,5 @@
+# ignore W2V
+Word2Vec/
+
+# ignore .env
+.env

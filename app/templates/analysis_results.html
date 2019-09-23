@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+
+{% block pagestyles %}
+<style>
+    svg {
+        background-color: #F1F3F3;
+    }
+    .links line {
+        stroke: #999;
+        stroke-width: 3px;
+        stroke-opacity: 0.6;
+    }
+    .nodes circle {
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+    .tooltip {
+        position: absolute;
+        display: none;
+        padding: 10px;
+        padding-left: 15px;
+        min-width: 100px;
+        height: auto;
+        border: 0;
+        border-radius: 15px;
+        font: 14px sans-serif;
+        color: #fff;
+        opacity: 0.9;
+        background: #333333;
+    }
+    .table {
+        margin-bottom: 0;
+    }
+    td, th{
+        text-align: center;
+    }
+    .panel h3 {
+        text-align: center;
+    }
+    svg {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block app_content %}
+<div id="content" class="container">
+    <div class="page-header">
+        <h1>Resultados para {{ data['user_name'] }} <small>Similitud entre tu y tus amigos</small></h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="https://twitter.com/{{ data['user_screen_name'] }}" class="thumbnail">
+                <img src="{{ data['user_avatar'] }}" alt="{{ data['user_screen_name'] }}">
+            </a>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Publicaciones</h3>
+                </div>
+                <div class="panel-body">
+                    <h3>{{ data['user_tweets_count'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Amigos</h3>
+                </div>
+                <div class="panel-body">
+                    <h3>{{ data['user_friends_count'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Personalidad</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>EXT</th>
+                            <th>AGR</th>
+                            <th>CON</th>
+                            <th>OPE</th>
+                            <th>STA</th>
+                        </tr>
+                        <tr>
+                            {% for p in data['user_personality'] %}
+                            <td>
+                                {% if (p == 1) %}
+                                <span style="color:green;font-size:40px;">+</span>
+                                {% else %}
+                                <span style="color:red;font-size:40px;">-</span>
+                                {% endif %}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <!-- Charts panel -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Resultados de usuario</h3>
+            </div>
+            <div class="panel-body" id="graphpanel">
+                <svg width="800" height="600"></svg>
+            </div>
+        </div>
+        <!-- ./charts panel -->
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Amigos más similares</h3>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre de usuario</th>
+                </tr>
+                {% for f in data['friends'] %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ f['name'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript">
+//-- CONSTANTS
+var ESC = 50;
+var RADIUS = 15
+var POS_SPAN = '<span style="color:green;font-size:20px;">+</span>';
+var NEG_SPAN = '<span style="color:red;font-size:20px;">-</span>';
+
+// document.ready -- load graph
+$(function() {
+    set_chart();
+});
+
+function set_chart() {
+    console.log('setting chart');
+    $.ajax('{{ url_for('main.get_analysis_results') }}').done(
+        function(nodes_data) {
+            //-------------------------- GRAPH SET UP -------------------------
+            // graph context
+            var svg = d3.select("svg")
+            width =+ svg.attr("width"),
+            height =+ svg.attr("height");
+
+            // tooltip
+            var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+            // encompasing group for the zoom
+            var g = svg.append("g")
+            .attr("class", "everything");
+
+            // simulation set up
+            var simulation = d3.forceSimulation()
+            //add nodes
+            .nodes(nodes_data);
+
+            // simulation forces
+            simulation
+            // charge to each node
+            .force("charge_force", d3.forceManyBody())
+            // centering force
+            .force("center_force", d3.forceCenter(width / 2, height / 2));
+
+            //--------------- Creating Links ---------------
+            links_data = set_links();
+
+            // link force
+            // We need the id accessor to use named sources and targets
+            var link_force =  d3.forceLink(links_data)
+            .id(function(d) { return d.name; })
+            .distance(function(d) { return (d.distance + 1) * ESC; } ).strength(1);
+
+            // execute on each simulation tick
+            simulation.on("tick", tickActions );
+
+            // Add a links force to the simulation
+            // Specify links  in d3.forceLink argument
+            simulation.force("links", link_force);
+
+
+            //-------------------------- RENDERING -------------------------
+            // we need to render the links first and then the nodes
+            // otherwise the links cover the nodes and obstruct hover functionality
+
+            // draw lines for the links
+            var link = g.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(links_data)
+            .enter().append("line")
+            .attr("stroke-width", 2);
+
+            // draw circles for the nodes
+            var nodes = g.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(nodes_data)
+            .enter()
+            .append("circle")
+            .attr("r", RADIUS)
+            .attr("fill", colorNode);
+
+            nodes.append("title")
+            .text(function(d) {
+                return (d.name);
+            });
+
+            nodes.on("mouseover", function(d) {
+                d3.select(this).moveToFront();
+                d3.select(this).style('r', 20);
+            });
+            nodes.on("mousemove", showTooltip);
+            nodes.on("mouseout", function(d) {
+                hideTooltip();
+                d3.select(this).style('r', RADIUS);
+            });
+
+            //------------------------- HANDLERS ---------------------------
+            // add zoom capabilities
+            var zoom_handler = d3.zoom()
+            .on("zoom", zoom_actions);
+
+            var drag_handler = d3.drag()
+            .on("start", drag_start)
+            .on("drag", drag_drag)
+            .on("end", drag_end);
+
+            zoom_handler(svg);
+            drag_handler(nodes);
+            /*=============================== CHART RELATED FUNCTIONS ==============================*/
+            function set_links() {
+                user = nodes_data[0]['name']
+                var links_data = [];
+                // from element 1, since 0 is user
+                for (var i = 1; i < nodes_data.length; i++) {
+                    var v = { "source": user, "target": nodes_data[i]['name'], "distance": nodes_data[i]['distance'] };
+                    links_data.push(v);
+                }
+                return links_data;
+            }
+
+            function zoom_actions() {
+                g.attr("transform", d3.event.transform);
+            }
+
+            function tickActions() {
+                // update circle positions each tick of the simulation
+                nodes
+                .attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+
+                // update link positions each tick of the simulation
+                // tells one end of the line to follow one node around
+                // and the other end of the line to follow the other node around
+                link
+                .attr("x1", function(d) { return d.source.x; })
+                .attr("y1", function(d) { return d.source.y; })
+                .attr("x2", function(d) { return d.target.x; })
+                .attr("y2", function(d) { return d.target.y; });
+            }
+
+            function drag_start(d) {
+                if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function drag_drag(d) {
+                d.fx = d3.event.x;
+                d.fy = d3.event.y;
+            }
+
+            function drag_end(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            // moves node to front so other nodes don't cover it while moving
+            d3.selection.prototype.moveToFront = function() {
+                return this.each(function() {
+                    this.parentNode.appendChild(this);
+                });
+            }
+
+            // Color node grey if the node is the analyzed user
+            // red otherwise
+            function colorNode(d) {
+                if (d.user) {
+                    return "grey";
+                } else {
+                    return "red";
+                }
+            }
+
+            function showTooltip(d) {
+                tooltip
+                .style("left", d3.event.pageX - 50 + 'px')
+                .style("top", d3.event.pageY - 200 + 'px')
+                .style("display", "inline-block")
+                .html('<img src="'+ d.avatar +'" width="30px" heigth="30px" /> ' + d.name + "<br/>" +
+                "EXT: " + (d.personality[0] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                "AGR: " + (d.personality[1] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                "CON: " + (d.personality[2] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                "OPE: " + (d.personality[3] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                "STA: " + (d.personality[4] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>");
+            }
+            function hideTooltip(d) {
+                tooltip.style("display", "none");
+            }
+        }
+    );
+}
+</script>
+{% endblock %}

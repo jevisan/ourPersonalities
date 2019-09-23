@@ -1,0 +1,11 @@
+Estimado {{ user.username }},
+
+El analisis que solicitaste se ha completado exitosamente. Acceda al siguiente vinculo para ver los resultados:
+
+{{ url_for('main.analysis_results', task=task, _external=True) }}
+
+Si no has solicidado un analisis de personalidad de ourPersonalities, ignora este mensaje.
+
+Sinceramente,
+
+ourPersonalities. Grupo Lenguaje y Razonamiento, UAM Cuajimalpa.

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div id="content" class="container">
+    <div class="page-header">
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="row">
+        <p>Seleccione un usuario para mostrar resultados</p>
+        <form>
+            <select id="selectdemo" class="form-control">
+                <option value="">---</option>
+                {% for key, value in demos.items() %}
+                <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+    $('#selectdemo').change(function() {
+        goto_demo();
+    });
+
+    function goto_demo() {
+        var demo = $('#selectdemo').val();
+        window.location = 'http://127.0.0.1:5000/analysis_results/'+demo;
+    }
+</script>
+{% endblock %}

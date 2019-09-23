@@ -1,0 +1,438 @@
+<html><head>
+    <title>
+    Analisis de usuario
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/custom.css">
+
+<style>
+    svg {
+        background-color: #F1F3F3;
+    }
+    .links line {
+        stroke: #999;
+        stroke-width: 3px;
+        stroke-opacity: 0.6;
+    }
+    .nodes circle {
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+    .tooltip {
+        position: absolute;
+        display: none;
+        padding: 10px;
+        padding-left: 15px;
+        min-width: 100px;
+        height: auto;
+        border: 0;
+        border-radius: 15px;
+        font: 14px sans-serif;
+        color: #fff;
+        opacity: 0.9;
+        background: #333333;
+    }
+</style>
+
+
+  </head>
+  <body style="">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">ourPersonalities</a>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div class="row">
+    <div id="content" class="container"><h1>Resultados</h1>
+<div class="col-md-8">
+    <!-- Charts panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Resultados de usuario</h3>
+        </div>
+        <div class="panel-body">
+            <!-- <canvas id="analyticChart" width="100%" height=""></canvas> -->
+            <svg width="700" height="500"><g class="everything"><g class="links"></g><g class="nodes"><circle r="15" fill="grey" style="r: 20;"><title></title></circle></g></g></svg>
+        </div>
+    </div>
+    <!-- ./charts panel -->
+</div>
+<div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Amigos más similares</h3>
+        </div>
+        <table class="table">
+            <tbody><tr>
+                <th>#</th>
+                <th>Nombre de usuario</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>El_Universal_Mx</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>lajornadaonline</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Excelsior</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>ActualidadRT</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Reforma</td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>AristeguiOnline</td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td>ExpansionMx</td>
+            </tr>
+
+            <tr>
+                <td>8</td>
+                <td>JoseCardenas1</td>
+            </tr>
+
+            <tr>
+                <td>9</td>
+                <td>emeequis</td>
+            </tr>
+
+            <tr>
+                <td>10</td>
+                <td>Culturizando</td>
+            </tr>
+
+            <tr>
+                <td>11</td>
+                <td>sopitas</td>
+            </tr>
+
+            <tr>
+                <td>12</td>
+                <td>RoyCampos</td>
+            </tr>
+
+            <tr>
+                <td>13</td>
+                <td>Pajaropolitico</td>
+            </tr>
+
+            <tr>
+                <td>14</td>
+                <td>EnfoqueNoticias</td>
+            </tr>
+
+            <tr>
+                <td>15</td>
+                <td>epigmenioibarra</td>
+            </tr>
+
+            <tr>
+                <td>16</td>
+                <td>bbcmundo</td>
+            </tr>
+
+            <tr>
+                <td>17</td>
+                <td>CNNEE</td>
+            </tr>
+
+            <tr>
+                <td>18</td>
+                <td>roblesmaloof</td>
+            </tr>
+
+            <tr>
+                <td>19</td>
+                <td>Milenio</td>
+            </tr>
+
+            <tr>
+                <td>20</td>
+                <td>webcamsdemexico</td>
+            </tr>
+
+        </tbody></table>
+    </div>
+</div></div>
+</div>
+
+    <footer class="footer">
+        <hr>
+        <div class="container">
+            <p class="text-muted">2019 jorgevigilsantos@gmail.com</p>
+        </div>
+    </footer>
+
+
+<script type="text/javascript">
+var nodes_data = [
+    {
+        "avatar": "https://pbs.twimg.com/profile_images/1080509666780684288/NQp3mb9S.jpg",
+        "name" : "uamcuajimalpa",
+        "user": 1,
+        "friends_count": 329,
+        "tweets_count": 7263,
+        "personality": [1, 1, 0, 0, 0] },
+    {
+        "avatar": "https://pbs.twimg.com/profile_images/1049307100638105602/I4u4E9UQ_normal.jpg",
+        "distance": 0,
+        "personality": [1, 1, 0, 0, 0],
+        "name": "El_Universal_Mx",
+        "tweets_count": 773043 },
+    {
+        "avatar": "https://pbs.twimg.com/profile_images/588503723002834944/95acWEsy_normal.jpg",
+        "distance": 0,
+        "personality": [1, 1, 0, 0, 0],
+        "name": "lajornadaonline",
+        "tweets_count": 227759 },
+    {
+        "avatar": "https://pbs.twimg.com/profile_images/1145770462892318721/5T8_Yv9j_normal.png",
+        "distance": 1,
+        "personality": [0, 1, 0, 0, 0],
+        "name": "Excelsior",
+        "tweets_count": 624810 },
+    {"avatar": "https://pbs.twimg.com/profile_images/979275073038225408/LNizh4B9_normal.jpg", "distance": 1, "personality": [1, 0, 0, 0, 0], "name": "ActualidadRT", "tweets_count": 552492},
+    {"avatar": "https://pbs.twimg.com/profile_images/1082787530091548672/tQxy1Vvx_normal.jpg", "distance": 1, "personality": [1, 1, 1, 0, 0], "name": "Reforma", "tweets_count": 358092},
+    {"avatar": "https://pbs.twimg.com/profile_images/1067110021115170816/YAPVlY0W_normal.jpg", "distance": 1, "personality": [1, 0, 0, 0, 0], "name": "AristeguiOnline", "tweets_count": 259429},
+    {"avatar": "https://pbs.twimg.com/profile_images/915594245632794624/2OIAPkHN_normal.jpg", "distance": 2, "personality": [1, 1, 0, 1, 1], "name": "ExpansionMx", "tweets_count": 581026},
+    {"avatar": "https://pbs.twimg.com/profile_images/933254372330323970/P5m_TYou_normal.jpg", "distance": 2, "personality": [0, 0, 0, 0, 0], "name": "JoseCardenas1", "tweets_count": 299375},
+    {"avatar": "https://pbs.twimg.com/profile_images/526058883886747648/-vUS0OKI_normal.jpeg", "distance": 2, "personality": [1, 1, 1, 1, 0], "name": "emeequis", "tweets_count": 238874},
+    {"avatar": "https://pbs.twimg.com/profile_images/958229605827178496/OnhBi8ZG_normal.jpg", "distance": 2, "personality": [0, 1, 1, 0, 0], "name": "Culturizando", "tweets_count": 233106},
+    {"avatar": "https://pbs.twimg.com/profile_images/1066360955917881344/1JEzA5He_normal.jpg", "distance": 2, "personality": [0, 1, 1, 0, 0], "name": "sopitas", "tweets_count": 173041},
+    {"avatar": "https://pbs.twimg.com/profile_images/1099288255260962817/BOlEAYxw_normal.jpg", "distance": 2, "personality": [0, 1, 0, 1, 0], "name": "RoyCampos", "tweets_count": 169837},
+    {"avatar": "https://pbs.twimg.com/profile_images/1145800112179859456/7PvkayRH_normal.png", "distance": 3, "personality": [0, 1, 1, 0, 1], "name": "Pajaropolitico", "tweets_count": 574356},
+    {"avatar": "https://pbs.twimg.com/profile_images/1145646437121875970/zbS-sUOn_normal.png", "distance": 3, "personality": [0, 0, 0, 1, 0], "name": "EnfoqueNoticias", "tweets_count": 352356},
+    {"avatar": "https://pbs.twimg.com/profile_images/774064340278272000/yJ1R9OTd_normal.jpg", "distance": 3, "personality": [0, 0, 0, 0, 1], "name": "epigmenioibarra", "tweets_count": 340349},
+    {"avatar": "https://pbs.twimg.com/profile_images/1001752869517910016/Xq8-sAa4_normal.jpg", "distance": 3, "personality": [1, 0, 1, 1, 0], "name": "bbcmundo", "tweets_count": 295788},
+    {"avatar": "https://pbs.twimg.com/profile_images/589795319216504832/6a71ZHkx_normal.jpg", "distance": 3, "personality": [0, 1, 0, 1, 1], "name": "CNNEE", "tweets_count": 211436},
+    {"avatar": "https://pbs.twimg.com/profile_images/1113846077202079745/wtPJ31V9_normal.jpg", "distance": 3, "personality": [0, 1, 1, 0, 1], "name": "roblesmaloof", "tweets_count": 207205},
+    {"avatar": "https://pbs.twimg.com/profile_images/1146185826218467334/uiLi6xRp_normal.png", "distance": 4, "personality": [0, 1, 1, 1, 1], "name": "Milenio", "tweets_count": 756979},
+    {"avatar": "https://pbs.twimg.com/profile_images/1740334648/Nuovo_logo_normal.jpg", "distance": 4, "personality": [0, 0, 1, 0, 1], "name": "webcamsdemexico", "tweets_count": 230672}
+];
+</script>
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- <script src="/static/js/Chart.js"></script> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript">
+    //-- CONSTANTS
+    var ESC = 50;
+    var RADIUS = 15
+    var POS_SPAN = '<span style="color:green;font-size:20px;">+</span>';
+    var NEG_SPAN = '<span style="color:red;font-size:20px;">-</span>';
+
+    // nodes data
+
+    //-------------------------- GRAPH SET UP -------------------------
+    // graph context
+    var svg = d3.select("svg"),
+        width =+ svg.attr("width"),
+        height =+ svg.attr("height");
+
+    // tooltip
+    var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+    // encompasing group for the zoom
+    var g = svg.append("g")
+                .attr("class", "everything");
+
+    // simulation set up
+    var simulation = d3.forceSimulation()
+                        //add nodes
+                        .nodes(nodes_data);
+
+    // simulation forces
+    simulation
+        // charge to each node
+        .force("charge_force", d3.forceManyBody())
+        // centering force
+        .force("center_force", d3.forceCenter(width / 2, height / 2));
+
+    //--------------- Creating Links ---------------
+    links_data = set_links();
+
+    // link force
+    // We need the id accessor to use named sources and targets
+    var link_force =  d3.forceLink(links_data)
+                        .id(function(d) { return d.name; })
+                        .distance(function(d) { return (d.distance + 1) * ESC; } ).strength(1);
+
+    // execute on each simulation tick
+    simulation.on("tick", tickActions );
+
+    // Add a links force to the simulation
+    // Specify links  in d3.forceLink argument
+    simulation.force("links", link_force);
+
+
+    //-------------------------- RENDERING -------------------------
+    // we need to render the links first and then the nodes
+    // otherwise the links cover the nodes and obstruct hover functionality
+
+    // draw lines for the links
+    var link = g.append("g")
+          .attr("class", "links")
+        .selectAll("line")
+        .data(links_data)
+        .enter().append("line")
+          .attr("stroke-width", 2);
+
+    // draw circles for the nodes
+    var nodes = g.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(nodes_data)
+            .enter()
+            .append("circle")
+            .attr("r", RADIUS)
+            .attr("fill", colorNode);
+
+    nodes.append("title")
+        .text(function(d) {
+            return (d.name);
+        });
+
+    nodes.on("mouseover", function(d) {
+        d3.select(this).moveToFront();
+        d3.select(this).style('r', 20);
+    });
+    nodes.on("mousemove", showTooltip);
+    nodes.on("mouseout", function(d) {
+        hideTooltip();
+        d3.select(this).style('r', RADIUS);
+    });
+
+    //------------------------- HANDLERS ---------------------------
+    // add zoom capabilities
+    var zoom_handler = d3.zoom()
+                        .on("zoom", zoom_actions);
+
+    var drag_handler = d3.drag()
+                        .on("start", drag_start)
+                        .on("drag", drag_drag)
+                        .on("end", drag_end);
+
+    zoom_handler(svg);
+    drag_handler(nodes);
+
+/*=============================== FUNCTIONS ==============================*/
+    function set_links() {
+        user = nodes_data[0]['name']
+        var links_data = [];
+        // from first element, since 0 is user
+        for (var i = 1; i < nodes_data.length; i++) {
+            var v = { "source": user, "target": nodes_data[i]['name'], "distance": nodes_data[i]['distance'] };
+            links_data.push(v);
+        }
+        return links_data;
+    }
+
+    function zoom_actions() {
+        g.attr("transform", d3.event.transform);
+    }
+
+    function tickActions() {
+        // update circle positions each tick of the simulation
+        nodes
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+
+        // update link positions each tick of the simulation
+        // tells one end of the line to follow one node around
+        // and the other end of the line to follow the other node around
+        link
+            .attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+      }
+
+    function drag_start(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function drag_drag(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+
+    function drag_end(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+
+    // moves node to front so other nodes don't cover it while moving
+    d3.selection.prototype.moveToFront = function() {
+        return this.each(function() {
+            this.parentNode.appendChild(this);
+        });
+    }
+
+    // Color node grey if the node is the analyzed user
+    // red otherwise
+    function colorNode(d) {
+        if (d.user) {
+            return "grey";
+        } else {
+            return "red";
+        }
+    }
+
+    function showTooltip(d) {
+        tooltip
+            .style("left", d3.event.pageX - 50 + 'px')
+            .style("top", d3.event.pageY - 200 + 'px')
+            .style("display", "inline-block")
+            .html('<img src="'+ d.avatar +'" width="30px" heigth="30px" /> ' + d.name + "<br/>" +
+                  "Ext: " + (d.personality[0] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                  "Agr: " + (d.personality[1] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                  "Con: " + (d.personality[2] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                  "Sta: " + (d.personality[3] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>" +
+                  "Ope: " + (d.personality[4] == 1 ? POS_SPAN:NEG_SPAN) + "<br/>");
+    }
+    function hideTooltip(d) {
+        tooltip.style("display", "none");
+    }
+    </script>
+</html>
