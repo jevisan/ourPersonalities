@@ -5,3 +5,5 @@ Word2Vec/
 .env
 
 __pycache__/
+
+venv/
