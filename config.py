@@ -5,7 +5,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
 class Config(object):
-    SERVER_NAME=os.environ.get('SERVER_NAME') or '127.0.0.1:5000'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'opsupersecretpassword'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
@@ -16,7 +15,8 @@ class Config(object):
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['youremail@example.com']
+    LYRADMIN = ['youremail@example.com']
+    MANTADMIN = ['youremail@example.com']
     TWITTER_APP_KEY = os.environ.get('TWITTER_APP_KEY')
     TWITTER_APP_SECRET = os.environ.get('TWITTER_APP_SECRET')
     TWITTER_OAUTH_TOKEN = os.environ.get('TWITTER_OAUTH_TOKEN')

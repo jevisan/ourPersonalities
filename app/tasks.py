@@ -135,7 +135,8 @@ def get_user_friends(user_name=None, user_id=None):
 
 def get_user_personality(user_texts):
     """Get user personality given list of texts from user"""
-    # return dummyPersonality()
+    time.sleep(60*15)
+    return True
     # EMB CLIENT INSTANCE
     emb_client = EmbSocketClient(EMBSC_ADDR, EMBSC_PORT)
     u_personality = list()
@@ -259,12 +260,14 @@ def analyze_user(user_id=None, user_tag=None, max_friends=20):
 
         # SEND RESULTS EMAIL
         send_email('[ourPersonalities] Análisis completado',
-                    sender=app.config['ADMINS'][0],
+                    sender=app.config['LYRADMIN'][0],
                     recipients=[userm.email],
                     text_body=render_template('email/task_completed.txt',
                                                 user=userm, task=job.get_id()),
                     html_body=render_template('email/task_completed.html',
                                                 user=userm, task=job.get_id()))
+        # Sleeping 'til api request cools down
+        time.sleep(60*15)
     except:
         _set_task_progress(500, 'Analisis fallido')
         app.logger.error('Unhandled exception', exc_info=sys.exc_info())

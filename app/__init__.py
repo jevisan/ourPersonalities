@@ -37,7 +37,7 @@ def create_app(config_class=Config):
     mail.init_app(app)
 
     app.redis = Redis.from_url(app.config['REDIS_URL'])
-    app.task_queue = rq.Queue('ourPersonalities-tasks', connection=app.redis)
+    app.task_queue = rq.Queue('ourPersonalities-tasks', connection=app.redis, default_timeout=3600)
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
@@ -57,7 +57,7 @@ def create_app(config_class=Config):
             mail_handler = SMTPHandler(
                 mailhost = (app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
                 fromaddr = 'no-reply@' + app.config['MAIL_SERVER'],
-                toaddrs = app.config['ADMINS'], subject = 'ourPersonalities error',
+                toaddrs = app.config['MANTADMIN'], subject = 'ourPersonalities error',
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)

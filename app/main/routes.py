@@ -106,8 +106,6 @@ def analyze_user(usertag):
     if proceed is 1 or proceed is 3:
         # SE LANZA EL TASK A COLA DE REDIS
         current_user.launch_task('analyze_user', 'Analizando usuario', user_tag=usertag)
-        # task = launch_task('analyze_user', 'Analizando usuario', user=usertag, user_ip=user_ip, timeout='60m')
-        # task = launch_task('example', 'Analizando usuario', seconds=10, timeout='60m')
         db.session.commit()
         # un redirect a una vista de "estamos analizando sus tuits"
         return redirect(url_for('main.analyzing'))
