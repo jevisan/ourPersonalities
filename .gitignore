@@ -3,3 +3,5 @@ Word2Vec/
 
 # ignore .env
 .env
+
+__pycache__/
