@@ -17,6 +17,10 @@
                 <p>
                     Se le enviará un mensaje a su correo cuando el proceso termine.
                 </p>
+                <p>
+                    En caso de no recibir el correo, la siguiente liga estará disponible cuando el análisis se complete:
+                    <a href="{{ url_for('main.analysis_results/') }}{{ job }}">Resultados</a>
+                </p>
             </div>
         </div>
     </div>

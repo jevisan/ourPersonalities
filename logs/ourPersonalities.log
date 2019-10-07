@@ -127,3 +127,4 @@ Traceback (most recent call last):
     _set_task_progress(int(current_step*100/steps), 'Obteniendo informacion de {}'.format(f['user_name']))
 TypeError: 'TwythonError' object is not subscriptable
 2019-10-03 19:55:50,287 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-04 11:45:31,661 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]

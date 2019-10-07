@@ -42,8 +42,6 @@ def create_app(config_class=Config):
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
-    #app.server_name = app.config['SERVER_NAME']
-
     # INITIALIZE FILE LOGGING
     if not app.debug and not app.testing:
         # mail configuration

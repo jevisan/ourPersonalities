@@ -135,8 +135,6 @@ def get_user_friends(user_name=None, user_id=None):
 
 def get_user_personality(user_texts):
     """Get user personality given list of texts from user"""
-    time.sleep(60*15)
-    return True
     # EMB CLIENT INSTANCE
     emb_client = EmbSocketClient(EMBSC_ADDR, EMBSC_PORT)
     u_personality = list()

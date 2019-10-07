@@ -117,7 +117,8 @@ def analyze_user(usertag):
 @bp.route('/analyzing')
 @login_required
 def analyzing():
-    return render_template('analyzing.html', title='Analisis de personalidad en proceso')
+    job = current_user.get_task_in_progress('analyze_user').id
+    return render_template('analyzing.html', title='Analisis de personalidad en proceso', job=job)
 
 
 @bp.route('/analysis_results/<task>')
