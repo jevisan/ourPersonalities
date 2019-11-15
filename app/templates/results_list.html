@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div id="content" class="container">
+    <div class="page-header">
+        <h1>Lista de analisis realizados</h1>
+    </div>
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Cuenta analizada</th>
+                <th>Acciones</th>
+            </tr>
+            {% for key, value in data.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+                <td><a href="{{ url_for('main.analysis_results',task=key) }}">Ver</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

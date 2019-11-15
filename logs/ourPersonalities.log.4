@@ -1,96 +1,130 @@
-2019-09-04 21:49:42,269 : ERROR : Exception on /login [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py:1891]
+2019-09-23 13:25:27,746 : ERROR : Exception on /acerca [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 37, in login
-    form = LoginForm()
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 212, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/form.py", line 88, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 278, in __init__
-    self.process(formdata, obj, data=data, **kwargs)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 132, in process
-    field.process(formdata)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/csrf/core.py", line 43, in process
-    self.current_token = self.csrf_impl.generate_csrf_token(self)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 134, in generate_csrf_token
-    token_key=self.meta.csrf_field_name
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 47, in generate_csrf
-    setattr(g, field_name, s.dumps(session[field_name]))
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 166, in dumps
-    payload = want_bytes(self.dump_payload(obj))
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/url_safe.py", line 42, in dump_payload
-    json = super(URLSafeSerializerMixin, self).dump_payload(obj)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 133, in dump_payload
-    return want_bytes(self.serializer.dumps(obj, **self.serializer_kwargs))
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/_json.py", line 18, in dumps
-    return json.dumps(obj, **kwargs)
-  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
-    **kw).encode(obj)
-  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
-    return _iterencode(o, 0)
-  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
-    raise TypeError(repr(o) + " is not JSON serializable")
-TypeError: b'7d3b558357f50d8f6e0218cc6b045843735daa63' is not JSON serializable
-2019-09-04 21:55:48,893 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
-2019-09-04 21:55:57,949 : ERROR : Exception on /login [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py:1891]
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-09-23 13:28:10,493 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:29:30,930 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:30:47,228 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-23 13:31:03,914 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-24 23:06:12,233 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-09-25 11:57:19,379 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-25 12:33:37,478 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-25 12:34:20,597 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-26 15:08:10,862 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-26 15:09:36,756 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-09-26 15:15:08,429 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 18:21:25,434 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 18:26:24,919 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 19:01:20,603 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:01:20,859 : INFO : Solicitando analisis de uamcuajimalpa [in ./app/tasks.py:192]
+2019-10-03 19:03:42,375 : ERROR : Unhandled exception [in ./app/tasks.py:272]
 Traceback (most recent call last):
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "./app/tasks.py", line 267, in analyze_user
+    user=userm, task=job.get_id()))
+  File "./app/email.py", line 8, in send_email
+    mail.send(msg)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_mail.py", line 491, in send
+    with self.connect() as connection:
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_mail.py", line 144, in __enter__
+    self.host = self.configure_host()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_mail.py", line 165, in configure_host
+    host.login(self.mail.username, self.mail.password)
+  File "/usr/lib/python3.6/smtplib.py", line 730, in login
+    raise last_exception
+  File "/usr/lib/python3.6/smtplib.py", line 721, in login
+    initial_response_ok=initial_response_ok)
+  File "/usr/lib/python3.6/smtplib.py", line 642, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials a9sm1256109oie.7 - gsmtp')
+2019-10-03 19:03:46,604 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:03:46,771 : INFO : Solicitando analisis de uamcuajimalpa [in ./app/tasks.py:192]
+2019-10-03 19:06:01,223 : ERROR : Unhandled exception [in ./app/tasks.py:272]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 267, in analyze_user
+    user=userm, task=job.get_id()))
+  File "./app/email.py", line 8, in send_email
+    mail.send(msg)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_mail.py", line 491, in send
+    with self.connect() as connection:
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_mail.py", line 144, in __enter__
+    self.host = self.configure_host()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_mail.py", line 165, in configure_host
+    host.login(self.mail.username, self.mail.password)
+  File "/usr/lib/python3.6/smtplib.py", line 730, in login
+    raise last_exception
+  File "/usr/lib/python3.6/smtplib.py", line 721, in login
+    initial_response_ok=initial_response_ok)
+  File "/usr/lib/python3.6/smtplib.py", line 642, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials t22sm1316049otc.9 - gsmtp')
+2019-10-03 19:06:04,634 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:06:04,757 : INFO : Solicitando analisis de uamcuajimalpa [in ./app/tasks.py:192]
+2019-10-03 19:06:46,099 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 19:09:22,144 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:09:22,260 : INFO : Solicitando analisis de jevisa [in ./app/tasks.py:192]
+2019-10-03 19:09:24,770 : ERROR : Unhandled exception [in ./app/tasks.py:272]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 214, in analyze_user
+    user_personality = get_user_personality(user_tweets)
+  File "./app/tasks.py", line 161, in get_user_personality
+    corpus_vec_res = np.average(corpus_vec, axis=0)
+  File "<__array_function__ internals>", line 6, in average
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/numpy/lib/function_base.py", line 390, in average
+    avg = a.mean(axis)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/numpy/core/_methods.py", line 138, in _mean
+    rcount = _count_reduce_items(arr, axis)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/numpy/core/_methods.py", line 57, in _count_reduce_items
+    items *= arr.shape[ax]
+IndexError: tuple index out of range
+2019-10-03 19:09:42,173 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:09:42,331 : INFO : Solicitando analisis de jevisan85 [in ./app/tasks.py:192]
+2019-10-03 19:12:39,447 : ERROR : Unhandled exception [in ./app/tasks.py:272]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 269, in analyze_user
+    time.sleep(60*15)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/rq/timeouts.py", line 64, in handle_death_penalty
+    '({0} seconds)'.format(self._timeout))
+rq.timeouts.JobTimeoutException: Task exceeded maximum timeout value (180 seconds)
+2019-10-03 19:14:04,370 : ERROR : Exception on /analysis_results/15e521aa-041c-4b0b-87b-acbdfbaa54d4 [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 37, in login
-    form = LoginForm()
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 212, in __call__
-    return type.__call__(cls, *args, **kwargs)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/form.py", line 88, in __init__
-    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 278, in __init__
-    self.process(formdata, obj, data=data, **kwargs)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 132, in process
-    field.process(formdata)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/csrf/core.py", line 43, in process
-    self.current_token = self.csrf_impl.generate_csrf_token(self)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 134, in generate_csrf_token
-    token_key=self.meta.csrf_field_name
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 47, in generate_csrf
-    setattr(g, field_name, s.dumps(session[field_name]))
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 166, in dumps
-    payload = want_bytes(self.dump_payload(obj))
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/url_safe.py", line 42, in dump_payload
-    json = super(URLSafeSerializerMixin, self).dump_payload(obj)
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 133, in dump_payload
-    return want_bytes(self.serializer.dumps(obj, **self.serializer_kwargs))
-  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/_json.py", line 18, in dumps
-    return json.dumps(obj, **kwargs)
-  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
-    **kw).encode(obj)
-  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
-    chunks = self.iterencode(o, _one_shot=True)
-  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
-    return _iterencode(o, 0)
-  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
-    raise TypeError(repr(o) + " is not JSON serializable")
-TypeError: b'7d3b558357f50d8f6e0218cc6b045843735daa63' is not JSON serializable
-2019-09-04 22:05:15,916 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.6/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 130, in analysis_results
+    data = result.get_data()
+AttributeError: 'NoneType' object has no attribute 'get_data'
+2019-10-03 19:17:37,119 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 19:19:12,032 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:22:34,673 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 19:22:52,249 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:23:00,852 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 19:23:22,314 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:23:34,870 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:24:08,958 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-03 19:24:27,986 : INFO : ourPersonalities startup [in ./app/__init__.py:76]
+2019-10-03 19:24:28,114 : INFO : Solicitando analisis de jevisan85 [in ./app/tasks.py:193]
+2019-10-03 19:39:33,954 : ERROR : Unhandled exception [in ./app/tasks.py:273]
+Traceback (most recent call last):
+  File "./app/tasks.py", line 222, in analyze_user
+    _set_task_progress(int(current_step*100/steps), 'Obteniendo informacion de {}'.format(f['user_name']))
+TypeError: 'TwythonError' object is not subscriptable
+2019-10-03 19:55:50,287 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]
+2019-10-04 11:45:31,661 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:76]

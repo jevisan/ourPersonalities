@@ -120,6 +120,27 @@ def analyzing():
     job = current_user.get_task_in_progress('analyze_user').id
     return render_template('analyzing.html', title='Analisis de personalidad en proceso', job=job)
 
+@bp.route('/results_list')
+@login_required
+def results_list():
+    results = current_user.get_successful_tasks()
+    print(results)
+    result_dict = {}
+    for result in results:
+        analysis_result = Result.query.get(result.id)
+        result_data = analysis_result.get_data()
+        result_dict[result.id] = result_data['user_screen_name']
+    print("lista de resultados:", result_dict)
+    data = result_dict
+    return render_template('results_list.html', title='Lista de análisis', data=data)
+
+
+@bp.route('/result')
+@login_required
+def result():
+    result = current_user.get_last_result()
+    return redirect(url_for('main.analysis_results', task=result.id))
+
 
 @bp.route('/analysis_results/<task>')
 @login_required
@@ -155,10 +176,16 @@ def get_analysis_results():
     return jsonify(nodes_data)
 
 
-@bp.route('/acerca')
-def acerca():
+@bp.route('/downloadpaper')
+def downloadpaper():
     files_folder = os.path.dirname(os.path.abspath(__file__)) + '/../static/files/'
     return send_from_directory(files_folder, 'Vigil_Santos_Jorge_Documento_PT3.pdf', as_attachment=True)
+
+
+@bp.route('/acerca')
+def acerca():
+    return render_template('acerca.html', title='Acerca')
+
 
 @bp.route('/demo')
 def demo():

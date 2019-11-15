@@ -27,7 +27,8 @@
                 {% if current_user.is_anonymous %}
                 <li><a href="{{ url_for('main.login') }}">Login</a></li>
                 {% else %}
-                <li><a class="" href="{{ url_for('main.acerca') }}">Acerca</a></li>
+                <li><a href="{{ url_for('main.acerca') }}">Acerca</a></li>
+                <li><a href="{{ url_for('main.results_list') }}">Resultados previos</a></li>
                 <li><p class="navbar-text">Hola, {{ current_user.username }}</p></li>
                 <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
                 {% endif %}

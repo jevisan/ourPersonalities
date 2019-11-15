@@ -1,104 +1,96 @@
-2019-08-31 00:39:49,908 : ERROR : Exception on /demo [GET] [in /home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py:1761]
+2019-09-04 21:44:34,620 : ERROR : Exception on /login [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 172, in demo
-    return render_template('demo.html', title='ourPersonalities Demo', demos=demos)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/jevisan/ourPersonalities/app/templates/demo.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/jevisan/ourPersonalities/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 26, in block "body"
-    {% block scripts %}
-  File "/home/jevisan/ourPersonalities/app/templates/demo.html", line 30, in block "scripts"
-    window.location = {{ url_for('/analysis_results/') }}+demo
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint '/analysis_results/'. Did you mean 'main.analysis_results' instead?
-2019-08-31 00:40:07,989 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
-2019-08-31 00:40:10,556 : ERROR : Exception on /demo [GET] [in /home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py:1761]
+  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 37, in login
+    form = LoginForm()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/form.py", line 88, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 278, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 132, in process
+    field.process(formdata)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/csrf/core.py", line 43, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 134, in generate_csrf_token
+    token_key=self.meta.csrf_field_name
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 47, in generate_csrf
+    setattr(g, field_name, s.dumps(session[field_name]))
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 166, in dumps
+    payload = want_bytes(self.dump_payload(obj))
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/url_safe.py", line 42, in dump_payload
+    json = super(URLSafeSerializerMixin, self).dump_payload(obj)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 133, in dump_payload
+    return want_bytes(self.serializer.dumps(obj, **self.serializer_kwargs))
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/_json.py", line 18, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: b'7d3b558357f50d8f6e0218cc6b045843735daa63' is not JSON serializable
+2019-09-04 21:47:53,132 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+2019-09-04 21:48:00,661 : ERROR : Exception on /login [GET] [in /home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2292, in wsgi_app
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1815, in full_dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1718, in handle_user_exception
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1813, in full_dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1799, in dispatch_request
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 172, in demo
-    return render_template('demo.html', title='ourPersonalities Demo', demos=demos)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/home/jevisan/ourPersonalities/app/templates/demo.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/jevisan/ourPersonalities/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 26, in block "body"
-    {% block scripts %}
-  File "/home/jevisan/ourPersonalities/app/templates/demo.html", line 30, in block "scripts"
-    window.location = {{ url_for('main.analysis_results/') }}+demo
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/home/jevisan/UAM/PT/source/ourPersonalities/venv/lib/python3.5/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'main.analysis_results/'. Did you mean 'main.analysis_results' instead?
-2019-08-31 00:40:30,660 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]
+  File "/home/jevisan/ourPersonalities/app/main/routes.py", line 37, in login
+    form = LoginForm()
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/form.py", line 88, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 278, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/form.py", line 132, in process
+    field.process(formdata)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/wtforms/csrf/core.py", line 43, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 134, in generate_csrf_token
+    token_key=self.meta.csrf_field_name
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/flask_wtf/csrf.py", line 47, in generate_csrf
+    setattr(g, field_name, s.dumps(session[field_name]))
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 166, in dumps
+    payload = want_bytes(self.dump_payload(obj))
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/url_safe.py", line 42, in dump_payload
+    json = super(URLSafeSerializerMixin, self).dump_payload(obj)
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/serializer.py", line 133, in dump_payload
+    return want_bytes(self.serializer.dumps(obj, **self.serializer_kwargs))
+  File "/home/jevisan/ourPersonalities/venv/lib/python3.5/site-packages/itsdangerous/_json.py", line 18, in dumps
+    return json.dumps(obj, **kwargs)
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: b'7d3b558357f50d8f6e0218cc6b045843735daa63' is not JSON serializable
+2019-09-04 21:49:35,039 : INFO : ourPersonalities startup [in /home/jevisan/ourPersonalities/app/__init__.py:74]

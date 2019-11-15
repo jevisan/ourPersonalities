@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<div id="content" class="container">
+    <div class="page-header">
+        <h1>{{ title }}</h1>
+    </div>
+    <h3>El proyecto</h3>
+    <p>Esta aplicación fue desarrollada por Jorge Elías Vigil Santos, miembro alumno del grupo de investigación <a href="http://lyr.cua.uam.mx">Lenguaje y Razonamiento</a>. Bajo la asesoría de la Mta. Gabriela Ramírez de la Rosa y el Dr. Esaú Villatoro Tello.</p>
+    <p>El trabajo de proyecto terminal, donde se reporta la investigación y el desarrollo respectivos a esta aplicación, puede descargarse en el siguiente enlace: <a href="{{ url_for('main.downloadpaper') }}">Herramienta para visualizar similitudes de la personalidad entre usuarios en Twitter</a>.</p>
+    <p>Este proyecto fue apoyado por el CONACYT mediante una beca.</p>
+    <p><b>Clave del proyecto ante CONACYT:</b> CB-2015/258588</p>
+    <p><b>Nombre de proyecto ante CONACYT:</b> Representación multimodal para la categorización automática de rasgos de personalidad.</p>
+    <br>
+    <h3>Privacidad y manejo de datos</h3>
+    <p>Esta herramienta requiere del registro de usuarios para su uso. Los datos personales, tales como correo electrónico y contraseñas, son almacenados y tratados con confidencialidad y de manera segura y encriptada.</p>
+    <p>Esta herramienta realiza una recolección y analisis de textos encontrados en Twitter, tanto del usuario solicitante del análisis, como de sus amigos (cuentas seguidas por el usuario que solicita el análisis), así como un reporte basado en los mismos.
+    Los textos producidos por los usuarios analizados, no son almacenados de manera permanente en el sistema. Los reportes de los análisis llevados a cabo, son almacenados por tiempo indefinido para que el usuario solicitante pueda acceder a estos posteriormente.</p>
+    <p>Si desea que algún análisis realizado por usted sea removido de manera permanente, favor de mandar un correo a la dirección: <a href="mailto:lyr.dti@correo.cua.uam.mx?subject=borrado">lyr.dti@correo.cua.uam.mx</a> indicando el Id del análisis realizado. Este Id puede verse en la lista de análisis realizados: <a href="{{ url_for('main.results_list') }}">Lista de análisis</a>.</p>
+    <br>
+    <h3>Dudas y comentarios</h3>
+    <p>Cualquier duda y comentario puede ser dirigido al correo del grupo de investigación <a href="mailto:lyr.dti@correo.cua.uam.mx?subject=feedback">lyr.dti@correo.cua.uam.mx</a></p>
+</div>
+{% endblock %}

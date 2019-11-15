@@ -47,6 +47,12 @@ class User(UserMixin, db.Model):
     def get_task_failed(self):
         return Task.query.filter_by(user=self, completed_with_status=500).first()
 
+    def get_successful_tasks(self):
+        return Task.query.filter_by(user=self, completed_with_status=100).all()
+
+    def get_last_result(self):
+        return Task.query.filter_by(user=self, completed_with_status=100).all()[-1]
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
